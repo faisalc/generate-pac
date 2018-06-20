@@ -23,13 +23,6 @@ paths:
         description: "OneSys MSISND (0 prefixed) eg. 0NNNNNNNNNN"
         required: true
         type: "string"
-      - name: "skip"
-        in: "query"
-        description: "number of records to skip for pagination"
-        required: false
-        type: "integer"
-        minimum: 5
-        format: "int32"
       - name: "accountNumber"
         in: "query"
         description: "OneSys Debtor number is also OneSys Account Number. eg. 0NNNNNNN"

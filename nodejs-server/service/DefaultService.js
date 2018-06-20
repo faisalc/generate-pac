@@ -6,11 +6,10 @@
  * By providing the customer's mobile number and their Onesys account number a PAC code for porting can be generated 
  *
  * mSISDN String OneSys MSISND (0 prefixed) eg. 0NNNNNNNNNN
- * skip Integer number of records to skip for pagination (optional)
  * accountNumber String OneSys Debtor number is also OneSys Account Number. eg. 0NNNNNNN (optional)
  * returns PACItem
  **/
-exports.generatePAC = function(mSISDN,skip,accountNumber) {
+exports.generatePAC = function(mSISDN,accountNumber) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
