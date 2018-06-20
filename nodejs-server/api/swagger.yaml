@@ -28,7 +28,7 @@ paths:
       - name: "accountNumber"
         in: "query"
         description: "OneSys Debtor number is also OneSys Account Number. eg. 0NNNNNNN"
-        required: false
+        required: true
         type: "string"
         minimum: 5
       responses:

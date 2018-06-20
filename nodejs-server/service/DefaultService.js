@@ -6,7 +6,7 @@
  * By providing the customer's mobile number and their Onesys account number a PAC code for porting can be generated 
  *
  * mSISDN String OneSys MSISND (0 prefixed) eg. 0NNNNNNNNNN
- * accountNumber String OneSys Debtor number is also OneSys Account Number. eg. 0NNNNNNN (optional)
+ * accountNumber String OneSys Debtor number is also OneSys Account Number. eg. 0NNNNNNN
  * returns PACItem
  **/
 exports.generatePAC = function(mSISDN,accountNumber) {
