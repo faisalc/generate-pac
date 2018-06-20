@@ -8,6 +8,7 @@ host: "virtserver.swaggerhub.com"
 basePath: "/faisaluk/GeneratePAC/1.0.0"
 schemes:
 - "https"
+security: []
 paths:
   /customer/generatePAC:
     get:
