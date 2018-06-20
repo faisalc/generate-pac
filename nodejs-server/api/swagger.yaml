@@ -1,0 +1,87 @@
+---
+swagger: "2.0"
+info:
+  description: "Generate a PAC code"
+  version: "1.0.0"
+  title: "Generate PAC API"
+host: "virtserver.swaggerhub.com"
+basePath: "/faisaluk/GeneratePAC/1.0.0"
+schemes:
+- "https"
+paths:
+  /customer/generatePAC:
+    get:
+      summary: "generate PAC code"
+      description: "By providing the customer's mobile number and their Onesys account\
+        \ number a PAC code for porting can be generated\n"
+      operationId: "generatePAC"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "MSISDN"
+        in: "query"
+        description: "OneSys MSISND (0 prefixed) eg. 0NNNNNNNNNN"
+        required: true
+        type: "string"
+      - name: "skip"
+        in: "query"
+        description: "number of records to skip for pagination"
+        required: false
+        type: "integer"
+        minimum: 5
+        format: "int32"
+      - name: "accountNumber"
+        in: "query"
+        description: "OneSys Debtor number is also OneSys Account Number. eg. 0NNNNNNN"
+        required: false
+        type: "string"
+        minimum: 5
+      responses:
+        200:
+          description: "PAC code details"
+          schema:
+            $ref: "#/definitions/PACItem"
+        400:
+          description: "Validation rules not satisfied"
+        401:
+          description: "Authentication parameter missing or authentication failed"
+        403:
+          description: "Authorization failed"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        404:
+          description: "Not Found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "Default"
+securityDefinitions:
+  Bearer:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+definitions:
+  PACItem:
+    type: "object"
+    required:
+    - "expiryDate"
+    - "pacCode"
+    - "pacExists"
+    properties:
+      pacCode:
+        type: "string"
+        example: "TTG999999"
+      expiryDate:
+        type: "string"
+        example: "2016-08-290T9:12:33.001Z"
+      pacExists:
+        type: "boolean"
+    example:
+      expiryDate: "2016-08-290T9:12:33.001Z"
+      pacExists: true
+      pacCode: "TTG999999"
+  ErrorResponse:
+    required:
+    - "Code"
+    properties:
+      Code:
+        type: "string"
